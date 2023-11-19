@@ -3,36 +3,51 @@ package M3T1;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-class Escola{
-    //Atributos
-    private String nome,CNPJ;   
+public class Escola {
+	
+    private String nome, CNPJ;
     private Endereco endereco;
-    private List departamentos;
-    private List discentes;
-    //Métodos
-    public Escola(String nome,String CNPJ){
-        this.nome=nome;
-        this.CNPJ=CNPJ;
-        this.departamentos=new ArrayList();
-        this.discentes=new ArrayList<>();
+    private List<Departamento> departamentos;
+    private List<Aluno> discentes;
+
+    public Escola(String nome, String CNPJ, Endereco endereco) {
+        this.nome = nome;
+        this.CNPJ = CNPJ;
+        this.endereco = endereco;
+        this.departamentos = new ArrayList<>();
+        this.discentes = new ArrayList<>();
     }
-    public void criarDepartamento(String nomeDepartamento){
-            departamentos.add(new Object(nomeDepartamento));
+    
+    public List<Departamento> getDepartamentos() {
+    	return departamentos;
     }
-    public void fecharDepartamento(Departamento departamento){
-            departamentos.remove(departamento);
+    
+    public void criarDepartamento(String nomeDepartamento) {
+        departamentos.add(new Departamento(nomeDepartamento));
     }
-    public void matricularAluno(Aluno novoAluno){
-            discentes.add(novoAluno);
+    
+    public void fecharDepartamento(Departamento departamento) {
+        departamentos.remove(departamento);
     }
-    public void trancarMatriculaAluno(Aluno aluno){
-            discentes.remove(aluno);
+    
+    public void matricularAluno(Aluno novoAluno) {
+        discentes.add(novoAluno);
     }
+    
+    public void trancarMatriculaAluno(Aluno aluno) {
+        discentes.remove(aluno);
+    }
+    
     public void agruparAlunos() {
-            Map<String,List<Aluno>> agrupamento=
-            discentes.stream().collect(Collectors.groupingBy(Aluno::recuperarNaturalidade));
-            System.out.println("Resultado do agrupamento por naturalidade: ");
-            agrupamento.forEach((String chave,List<Aluno> lista)->System.out.println(chave+" = "+lista));
+        Map<Naturalidade, List<Aluno>> agrupamento=
+        discentes.stream().collect(Collectors.groupingBy(Aluno::recuperarNaturalidade));
+        System.out.println("Resultado do agrupamento por naturalidade: ");
+        agrupamento.forEach((Naturalidade chave, List<Aluno> lista)->System.out.println(chave+" = "+lista));
     }
-} 
+    
+    public String toString() {
+    	return String.format("Nome: %s, CNPJ: %s, Endereço: %s", this.nome, this.CNPJ, this.endereco.logradouro + " - " + this.endereco.Numero);
+    }
+}
