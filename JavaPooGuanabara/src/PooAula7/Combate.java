@@ -16,12 +16,9 @@ public class Combate {
 		
 		l[5] = new Lutador("NerfSpeed", "Colombia", 25, 2.03f, 113.6f , 12, 0, 2);
 		
-//		l[0].apresentar();
-//		l[0].status();
-//		l[3].apresentar();
-//		l[4].status();
-		l[2].setPeso(77.9f);
-		l[2].status();
+		Luta UEC01 = new Luta();
+		UEC01.marcaLuta(l[0], l[1]);
+		UEC01.lutar();
 	}
 
 }

@@ -12,7 +12,7 @@ public class Lutador {
 	public void apresentar() {
 		System.out.println("Chegou a hora! Apresentamos o lutador " + this.getNome());
 		System.out.println("Diretamente de " + this.getNascionalidade());
-		System.out.println("Com "+ this.getIdade()+ "anos e "+ this.getAltura()+"\npesando \n" + this.getPeso()+"KG "+"com "+ ( this.getVitorias()+" vitórias \n"+ (this.getDerrotas())+ " derrotas e"));
+		System.out.println("Com "+ this.getIdade()+ " anos e "+ this.getAltura()+"\nPesando \n" + this.getPeso()+"KG "+"com "+ ( this.getVitorias()+" Vitórias \n"+ (this.getDerrotas())+ " Derrotas e"));
 		if (this.getEmpates() <= 1) System.out.println(this.getEmpates()+ " empate");{
 	    if (this.getEmpates()>1 ) System.out.println(this.getEmpates()+ " empates");
 		}

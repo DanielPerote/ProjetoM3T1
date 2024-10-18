@@ -7,5 +7,4 @@ public class Principal {
 		c.ligar();
 		c.abrirMenu();
 	}
-
 }
